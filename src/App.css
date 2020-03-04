@@ -1,12 +1,15 @@
 .main-container {
-  width: 50%;
+  width: 100%;
   height: 100%;
-  margin: 10% 25%;
+  display: grid;
+  justify-content: center;
 }
 
 .viewport-container {
+  margin-top: 10%;
   width: 100%;
   height: 300px;
+  position: relative;
 }
 
 .modificaiton-buttons-container {
