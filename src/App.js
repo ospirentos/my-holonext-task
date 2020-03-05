@@ -1,4 +1,4 @@
-import React, { Suspense, useState } from "react";
+import React, { Suspense, useState, useEffect } from "react";
 import "./App.css";
 import * as THREE from "three";
 import { Canvas, extend, useThree, useLoader } from "react-three-fiber";
@@ -7,17 +7,24 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
 extend({ OrbitControls });
 
-function App() {
-  const defaultCameraPositions = {
-    px: 0.47856748561778645,
-    rx: -2.75498783175586,
-    py: 0.37579497215950963,
-    ry: 0.534669096966282,
-    pz: -0.8481077970051053,
-    rz: 2.919532627963722
-  };
+const defaultCameraPositions = {
+  px: 0.47856748561778645,
+  rx: -2.75498783175586,
+  py: 0.37579497215950963,
+  ry: 0.534669096966282,
+  pz: -0.8481077970051053,
+  rz: 2.919532627963722
+};
+const texture1 = new THREE.TextureLoader().load("Image_1.png");
+const texture2 = new THREE.TextureLoader().load("Image_2.png");
+const texture3 = new THREE.TextureLoader().load("Image_3.png");
+texture1.flipY = false;
+texture2.flipY = false;
+texture3.flipY = false;
 
-  const [cameraPos, setCameraPos] = useState(defaultCameraPositions);
+function App() {
+  const [cameraPos] = useState(defaultCameraPositions);
+  const [currentTex, setCurrentTex] = useState(0);
 
   const Cube = () => {
     return (
@@ -35,6 +42,9 @@ function App() {
 
   function Asset({ url }) {
     const gltf = useLoader(GLTFLoader, url);
+    if (currentTex !== 0) {
+      gltf.materials.default.map = currentTex;
+    }
     return (
       <primitive
         object={gltf.scene}
@@ -49,6 +59,7 @@ function App() {
       camera,
       gl: { domElement }
     } = useThree();
+
     camera.position.x = cameraPos.px;
     camera.rotation.x = cameraPos.rx;
     camera.position.y = cameraPos.py;
@@ -74,7 +85,11 @@ function App() {
           <Scene />
         </Canvas>
       </div>
-      <div className="modificaiton-buttons-container">Color Buttons</div>
+      <div className="modificaiton-buttons-container">
+        <button onClick={() => setCurrentTex(texture2)}>Yeşil</button>
+        <button onClick={() => setCurrentTex(texture3)}>Kırmızı</button>
+        <button onClick={() => setCurrentTex(texture1)}>Mavi</button>
+      </div>
     </div>
   );
 }
