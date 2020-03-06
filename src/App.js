@@ -1,7 +1,7 @@
 import React, { Suspense, useState } from "react";
 import "./App.css";
 import * as THREE from "three";
-import { Canvas, extend, useThree, useLoader } from "react-three-fiber";
+import { Canvas, extend, useThree, useLoader, Dom } from "react-three-fiber";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
@@ -25,20 +25,6 @@ texture3.flipY = false;
 function App() {
   const [cameraPos] = useState(defaultCameraPositions);
   const [currentTex, setCurrentTex] = useState(0);
-
-  const Cube = () => {
-    return (
-      <mesh>
-        <boxBufferGeometry attach="geometry" />
-        <meshBasicMaterial
-          attach="material"
-          color="hotpink"
-          opacity={0.5}
-          transparent
-        />
-      </mesh>
-    );
-  };
 
   function Asset({ url }) {
     const gltf = useLoader(GLTFLoader, url);
@@ -69,7 +55,13 @@ function App() {
 
     return (
       <>
-        <Suspense fallback={<Cube />}>
+        <Suspense
+          fallback={
+            <Dom position={new THREE.Vector3(0.31, 0.1, 0)}>
+              <h1>Loading</h1>
+            </Dom>
+          }
+        >
           <Asset url="assets/objects/Mavi_sandalye.glb" />
         </Suspense>
         <ambientLight />
