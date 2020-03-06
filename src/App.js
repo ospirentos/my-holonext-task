@@ -15,9 +15,9 @@ const defaultCameraPositions = {
   pz: -0.8481077970051053,
   rz: 2.919532627963722
 };
-const texture1 = new THREE.TextureLoader().load("Image_1.png");
-const texture2 = new THREE.TextureLoader().load("Image_2.png");
-const texture3 = new THREE.TextureLoader().load("Image_3.png");
+const texture1 = new THREE.TextureLoader().load("assets/textures/Image_1.png");
+const texture2 = new THREE.TextureLoader().load("assets/textures/Image_2.png");
+const texture3 = new THREE.TextureLoader().load("assets/textures/Image_3.png");
 texture1.flipY = false;
 texture2.flipY = false;
 texture3.flipY = false;
@@ -70,7 +70,7 @@ function App() {
     return (
       <>
         <Suspense fallback={<Cube />}>
-          <Asset url="Mavi_sandalye.glb" />
+          <Asset url="assets/objects/Mavi_sandalye.glb" />
         </Suspense>
         <ambientLight />
         <pointLight position={[10, 10, 10]} />
