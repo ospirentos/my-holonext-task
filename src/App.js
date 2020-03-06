@@ -1,4 +1,4 @@
-import React, { Suspense, useState, useEffect } from "react";
+import React, { Suspense, useState } from "react";
 import "./App.css";
 import * as THREE from "three";
 import { Canvas, extend, useThree, useLoader } from "react-three-fiber";
@@ -86,9 +86,24 @@ function App() {
         </Canvas>
       </div>
       <div className="modificaiton-buttons-container">
-        <button onClick={() => setCurrentTex(texture2)}>Yeşil</button>
-        <button onClick={() => setCurrentTex(texture3)}>Kırmızı</button>
-        <button onClick={() => setCurrentTex(texture1)}>Mavi</button>
+        <div>Renk Seçenekleri</div>
+        <div className="color-selection-container">
+          <div
+            className="colorButton"
+            style={{ backgroundColor: "#013000" }}
+            onClick={() => setCurrentTex(texture2)}
+          ></div>
+          <div
+            className="colorButton"
+            style={{ backgroundColor: "#300001" }}
+            onClick={() => setCurrentTex(texture3)}
+          ></div>
+          <div
+            className="colorButton"
+            style={{ backgroundColor: "#0039A1" }}
+            onClick={() => setCurrentTex(texture1)}
+          ></div>
+        </div>
       </div>
     </div>
   );
