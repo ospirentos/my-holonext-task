@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/my-holonext-task/precache-manifest.cea0ef53c46d1d4f942003ea8ec52211.js"
+  "/my-holonext-task/precache-manifest.fda654ea64376b53648a8b1beb8e2fd5.js"
 );
 
 self.addEventListener('message', (event) => {
