@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "fb89ab72cb16637a0c310bd2f5ddcc2c",
+    "revision": "754fdc04ef9bf97b2ea30fc9884561ae",
     "url": "/my-holonext-task/index.html"
   },
   {
